@@ -19,6 +19,10 @@ import os
 from flask import Flask, request
 from google.cloud import storage
 
+from googleapiclient.discovery import build
+from oauth2client.client import GoogleCredentials
+credentials = GoogleCredentials.get_application_default()
+
 # [start config]
 app = Flask(__name__)
 
@@ -49,6 +53,7 @@ def upload():
     if not uploaded_file:
         return 'No file uploaded.', 400
 
+	storage = build('gcs', 'v1', credentials=credentials)
     # Create a Cloud Storage client.
     gcs = storage.Client()
 
