@@ -24,7 +24,7 @@ app = Flask(__name__)
 
 
 # Configure this environment variable via app.yaml
-CLOUD_STORAGE_BUCKET = os.environ['CLOUD_STORAGE_BUCKET']
+#CLOUD_STORAGE_BUCKET = os.environ['CLOUD_STORAGE_BUCKET']
 # [end config]
 
 
@@ -53,7 +53,7 @@ def upload():
     gcs = storage.Client()
 
     # Get the bucket that the file will be uploaded to.
-    bucket = gcs.get_bucket(CLOUD_STORAGE_BUCKET)
+    bucket = gcs.get_bucket('my_data_path')
 
     # Create a new blob and upload the file's content.
     blob = bucket.blob(uploaded_file.filename)
