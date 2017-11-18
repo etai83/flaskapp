@@ -53,7 +53,7 @@ def upload():
     if not uploaded_file:
         return 'No file uploaded.', 400
 
-    storage = build('gcs', 'v1', credentials=credentials)
+    storage = build('compute', 'v1', credentials=credentials)
     # Create a Cloud Storage client.
     gcs = storage.Client()
 
